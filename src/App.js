@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.css";
+import InfiniteScroll from "./components/InfiniteScroll";
 
 function App() {
+  const [datas, setDatas] = useState([]);
+  const [ scrollOptions, setScrollOptions ] = useState( {
+    childLength: 30,
+    fullHeight: 0,
+})
+  const initialDatas = require("./json/infiniteScroll.json");
+
+  useEffect(() => {
+    setDatas(initialDatas.slice(0, scrollOptions.childLength));
+  }, [scrollOptions.childLength]);
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <InfiniteScroll
+        datas={datas}
+        setDatas={setDatas}
+        scrollOptions={scrollOptions}
+        setScrollOptions={setScrollOptions}
+      />
     </div>
   );
 }
