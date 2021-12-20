@@ -5,7 +5,7 @@ function InfiniteScroll({ datas, scrollOptions, setDatas, setScrollOptions }) {
   const fullContent = useRef();
   const childContent = useRef();
   
-  const OnScroll = useCallback(
+  const onScroll = useCallback(
     (e) => {
       const scrollAreaHeight = fullContent.current.clientHeight;
       const myScroll = e.target.scrollTop + scrollAreaHeight;
@@ -28,7 +28,7 @@ function InfiniteScroll({ datas, scrollOptions, setDatas, setScrollOptions }) {
   }, [scrollOptions.childLength, scrollOptions.fullHeight]);
 
   return (
-    <div className="scroll-container" onScroll={OnScroll} ref={fullContent}>
+    <div className="scroll-container" onScroll={onScroll} ref={fullContent}>
       {datas?.map((data, index) => (
         <div key={index} className="content-contaienr" ref={childContent}>
           {data.title}
