@@ -1,8 +1,7 @@
-
 import { useCallback, useRef } from "react";
 import "../App.css";
 
-function InfiniteScroll({ datas, scrollOptions, setDatas, setScrollOptions }) {
+function InfiniteScroll({ datas, scrollOptions, setScrollOptions }) {
   const fullContent = useRef();
   const childContent = useRef();
   
