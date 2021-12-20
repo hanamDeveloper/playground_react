@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import "../App.css";
 
-function InfiniteScroll({ datas, scrollOptions, setDatas, initialDatas, setScrollOptions }) {
+function InfiniteScroll({ datas, scrollOptions, setDatas, setScrollOptions }) {
   const fullContent = useRef();
   const childContent = useRef();
   
-  const OnScroll = 
+  const OnScroll = useCallback(
     (e) => {
       const scrollAreaHeight = fullContent.current.clientHeight;
       const myScroll = e.target.scrollTop + scrollAreaHeight;
@@ -18,7 +18,9 @@ function InfiniteScroll({ datas, scrollOptions, setDatas, initialDatas, setScrol
          fullHeight : scrollOptions.fullHeight = childHeight * scrollOptions.childLength
         })
       }
-    }
+    }, [scrollOptions, setScrollOptions]
+  )
+
 
   useEffect(() => {
     setDatas(datas.slice(0, scrollOptions.childLength));

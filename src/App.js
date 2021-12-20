@@ -22,7 +22,6 @@ function App() {
         setDatas={setDatas}
         scrollOptions={scrollOptions}
         setScrollOptions={setScrollOptions}
-        initialDatas={initialDatas}
       />
     </div>
   );
