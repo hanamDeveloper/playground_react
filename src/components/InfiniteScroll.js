@@ -12,12 +12,14 @@ function InfiniteScroll({ datas, scrollOptions, setDatas, setScrollOptions }) {
       const childHeight = childContent.current.clientHeight;
       scrollOptions.fullHeight = e.nativeEvent.target.scrollHeight;
 
-      if (myScroll === scrollOptions.fullHeight) {
-        setScrollOptions({ ...scrollOptions,
+      const showMoreData = () => {
+          setScrollOptions({ ...scrollOptions,
           childLength : scrollOptions.childLength + 30,
-         fullHeight : scrollOptions.fullHeight = childHeight * scrollOptions.childLength
+          fullHeight : scrollOptions.fullHeight = childHeight * scrollOptions.childLength
         })
       }
+
+      myScroll === scrollOptions.fullHeight && showMoreData();
     }, [scrollOptions, setScrollOptions]
   )
 
