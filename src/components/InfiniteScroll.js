@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef } from "react";
+
+import { useCallback, useRef } from "react";
 import "../App.css";
 
 function InfiniteScroll({ datas, scrollOptions, setDatas, setScrollOptions }) {
@@ -22,12 +23,6 @@ function InfiniteScroll({ datas, scrollOptions, setDatas, setScrollOptions }) {
       myScroll === scrollOptions.fullHeight && showMoreData();
     }, [scrollOptions, setScrollOptions]
   )
-
-
-  useEffect(() => {
-    setDatas(datas.slice(0, scrollOptions.childLength));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scrollOptions.childLength, scrollOptions.fullHeight]);
 
   return (
     <div className="scroll-container" onScroll={onScroll} ref={fullContent}>

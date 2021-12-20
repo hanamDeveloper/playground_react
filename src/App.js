@@ -1,28 +1,15 @@
-import { useEffect, useState } from "react";
+import { Route, Routes, Redirect } from "react-router-dom";
 import "./App.css";
-import InfiniteScroll from "./components/InfiniteScroll";
+import Home from "./pages/Home";
+import PInfiniteScroll from "./pages/PInfiniteScroll";
 
 function App() {
-  const [datas, setDatas] = useState([]);
-  const [ scrollOptions, setScrollOptions ] = useState( {
-    childLength: 30,
-    fullHeight: 0,
-})
-  const initialDatas = require("./json/infiniteScroll.json");
-
-  useEffect(() => {
-    setDatas(initialDatas.slice(0, scrollOptions.childLength));
-  }, [scrollOptions.childLength]);
-  
-
   return (
     <div className="container">
-      <InfiniteScroll
-        datas={datas}
-        setDatas={setDatas}
-        scrollOptions={scrollOptions}
-        setScrollOptions={setScrollOptions}
-      />
+      <Routes>
+        <Route exact path="/infiniteScroll" element={<PInfiniteScroll />} />
+        <Route exact path="/" element={<Home />} />
+      </Routes>
     </div>
   );
 }
