@@ -14,6 +14,7 @@ const Home = () => {
       >
         <Link to="/">홈</Link>
         <Link to="infiniteScroll">무한 스크롤</Link>
+        <Link to="search">Search</Link>
       </div>
     </div>
   );
