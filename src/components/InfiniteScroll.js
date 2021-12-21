@@ -15,7 +15,7 @@ function InfiniteScroll({ datas, scrollOptions, setScrollOptions }) {
       const showMoreData = () => {
           setScrollOptions({ ...scrollOptions,
           childLength : scrollOptions.childLength + 30,
-          fullHeight : scrollOptions.fullHeight = childHeight * scrollOptions.childLength
+          fullHeight : childHeight * scrollOptions.childLength
         })
       }
 
