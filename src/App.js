@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/infiniteScroll" element={<PInfiniteScroll />} />
-        <Route exact path="/search" element={<PSearch />} />
+        {/* <Route exact path="/search" element={<PSearch />} /> */}
       </Routes>
     </div>
   );
