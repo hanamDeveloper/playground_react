@@ -89,7 +89,6 @@ const ZoomImage = ({ zoomRate, width, height }) => {
         y = 0;
       x = e.pageX - rect.left;
       y = e.pageY - rect.top;
-      y = e.pageY - rect.top;
       x = x - window.scrollX;
       y = y - window.scrollY;
 
