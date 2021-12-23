@@ -16,6 +16,7 @@ const Home = () => {
         <Link to="infiniteScroll">무한 스크롤</Link>
         <Link to="search">Search</Link>
         <Link to="zoomImage">ZoomImage</Link>
+        <Link to="zoomImage">Login</Link>
       </div>
     </div>
   );
