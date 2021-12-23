@@ -4,7 +4,7 @@ import ZoomImage from '../components/ZoomImage'
 const PZoomImage = () => {
 
     return (
-        <ZoomImage />
+        <ZoomImage zoomRate={5} width={350} height={300}/>
     )
 }
 
