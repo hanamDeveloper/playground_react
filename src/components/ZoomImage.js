@@ -73,14 +73,14 @@ const ZoomImage = ({ zoomRate, width, height }) => {
     cursorX: 0,
     cursorY: 0,
   });
-  const ImageRef = useRef();
-  const ImageZoomRef = useRef();
+  const imageRef = useRef();
+  const imageZoomRef = useRef();
   const cursorRef = useRef();
 
   const onMouseMove = useCallback((e, zoomRate) => {
-    ImageZoomRef.current.style.backgroundSize = `${
-      ImageRef.current.offsetWidth * zoomRate
-    }px ${ImageRef.current.offsetHeight * zoomRate}px`;
+    imageZoomRef.current.style.backgroundSize = `${
+      imageRef.current.offsetWidth * zoomRate
+    }px ${imageRef.current.offsetHeight * zoomRate}px`;
 
     const rect = e.target.getBoundingClientRect();
 
@@ -101,7 +101,7 @@ const ZoomImage = ({ zoomRate, width, height }) => {
     let x = pos.x - cursorRef.current.offsetWidth / 2;
     let y = pos.y - cursorRef.current.offsetHeight / 2;
 
-    ImageZoomRef.current.style.backgroundPosition = `-${x * zoomRate}px -${
+    imageZoomRef.current.style.backgroundPosition = `-${x * zoomRate}px -${
       y * zoomRate
     }px`;
 
@@ -116,12 +116,12 @@ const ZoomImage = ({ zoomRate, width, height }) => {
       <Target>
         <Cursor width={width} height={height} ref={cursorRef} cursor={cursor} cursorSize={zoomRate} />
         <Image
-          ref={ImageRef}
+          ref={imageRef}
           src={testImage}
           onMouseMove={(e) => onMouseMove(e, zoomRate)}
         />
       </Target>
-      <ImageZoom ref={ImageZoomRef} width={width} height={height} />
+      <ImageZoom ref={imageZoomRef} width={width} height={height} />
     </Container>
   );
 };
