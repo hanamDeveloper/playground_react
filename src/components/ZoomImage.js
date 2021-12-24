@@ -73,24 +73,22 @@ const ZoomImage = ({ zoomRate, width, height }) => {
     cursorX: 0,
     cursorY: 0,
   });
-  const imageRef = useRef();
-  const imageZoomRef = useRef();
-  const cursorRef = useRef();
+  const imageRef = useRef(); // 원본 이미지
+  const imageZoomRef = useRef(); // 확대될 이미지
+  const cursorRef = useRef(); // 마우스커서 혹은 확대할곳
 
-  const onMouseMove = useCallback((e, zoomRate) => {
-    imageZoomRef.current.style.backgroundSize = `${
-      imageRef.current.offsetWidth * zoomRate
-    }px ${imageRef.current.offsetHeight * zoomRate}px`;
+  const onMouseMove = useCallback((e, zoomRate) => { // mouse가 움직일때마다 실행 될 함수
+    imageZoomRef.current.style.backgroundSize = `${ // 백그라운드 사이즈를 설정함으로써 이미ㅣ지를 확대 할 수 있다.
+      imageRef.current.offsetWidth * zoomRate   
+    }px ${imageRef.current.offsetHeight * zoomRate}px`; // 실제이미지의 넓이와 높이 확대될 비율을 곱한다.
 
-    const rect = e.target.getBoundingClientRect();
+    const rect = e.target.getBoundingClientRect(); // 원본 이미지의 위치를 알아냅니다.
 
-    const getCursorPos = (e) => {
+    const getCursorPos = (e) => { // 커서의 좌표를 구하는 함수
       let x = 0,
         y = 0;
-      x = e.pageX - rect.left;
-      y = e.pageY - rect.top;
-      x = x - window.scrollX;
-      y = y - window.scrollY;
+      x = e.pageX - rect.left; 
+      y = e.pageY - rect.top; //원본 이미지 기준 마우스의 위치 - 페이지 전체 위치에서 원본 이미지가 떨어져있는 위치값
 
       return { x, y };
     };
