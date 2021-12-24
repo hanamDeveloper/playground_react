@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from "../datas/User/UserContextAPI";
 
 
@@ -27,7 +28,9 @@ const Button = styled.button`
 `;
 
 const Login = () => {
+    const navigate = useNavigate();
     const { userAccountDatas, setUserData } = useContext(UserContext)
+    
 
   const [input, setInput] = useState({
     id: "",
@@ -44,10 +47,12 @@ const Login = () => {
   const handleLogin = () => {
     setUserData(userAccountDatas.filter(userData => {
       if (userData.id === input.id) {
+        navigate(`/`)
         return userData.pw === input.pw;
       }
     }));
   };
+
 
 
   return (

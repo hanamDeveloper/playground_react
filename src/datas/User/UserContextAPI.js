@@ -1,29 +1,21 @@
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 import userAccountDatas from "../../json/userAccountDatas.json";
 
 const UserContext = createContext({
-    userAccountDatas: userAccountDatas,
-    count: 0,
+  userAccountDatas: userAccountDatas,
 });
 
 const UserProvider = ({ children }) => {
-    const [count, setCount] = useState(0);
-    const [ userData, setUserData ] = useState([])
-
-  const plusCount = ()=> {
-    setCount(count + 1);
-  };
-  
+  const [userData, setUserData] = useState([]);
 
   return (
     <UserContext.Provider
       value={{
         userAccountDatas,
-        count,
         userData,
         setUserData,
-        plusCount,
-      }}>
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
