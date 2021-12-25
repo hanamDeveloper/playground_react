@@ -21,6 +21,7 @@ const Home = () => {
         <Link to="search">Search</Link>
         <Link to="zoomImage">ZoomImage</Link>
         <Link to="login">Login</Link>
+        <Link to="comment">Comment</Link>
       </div>
     </div>
   );
