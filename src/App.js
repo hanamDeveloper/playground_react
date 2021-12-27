@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import PInfiniteScroll from "./pages/PInfiniteScroll";
 import PSearch from "./pages/PSearch";
 import PZoomImage from "./pages/PZoomImage";
+import PComment from "./pages/PComment";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/search" element={<PSearch />} />
         <Route exact path="/zoomImage" element={<PZoomImage />} />
         <Route exact path="/login" element={<Login />} />
+        <Route exact path="/comment" element={<PComment />} />
       </Routes>
       
     </div>
