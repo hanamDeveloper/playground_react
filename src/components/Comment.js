@@ -6,6 +6,11 @@ const CommentWrapper = styled.div`
   border: 1px solid black;
 `;
 
+const UserInfoWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const Comment = () => {
   const [input, setInput] = useState();
   const { userData } = useContext(UserContext);
@@ -18,10 +23,15 @@ const Comment = () => {
   const addComment = () => {
     setComments(
       comments.concat({
+        id: comments.length + 1,
         content: input,
         userName: userData[0].id,
       })
     );
+  };
+
+  const removeComment = (id) => {
+    return setComments(comments.filter((comment) => comment.id !== id));
   };
 
   return (
@@ -30,7 +40,10 @@ const Comment = () => {
       <button onClick={() => addComment(input)}>댓글달기</button>
       {comments.map((comment, index) => (
         <CommentWrapper key={`${comment.userName}_${index}`}>
-          <p>{comment.userName}</p>
+          <UserInfoWrapper>
+            <p>{comment.userName}</p>
+            <button onClick={() => removeComment(comment.id)}>삭제</button>
+          </UserInfoWrapper>
           {comment.content}
         </CommentWrapper>
       ))}
