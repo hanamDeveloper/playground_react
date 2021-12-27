@@ -34,15 +34,37 @@ const Comment = () => {
     return setComments(comments.filter((comment) => comment.id !== id));
   };
 
+  const chagneContent = (id, inputWord) => {
+    return setComments(comments.map((comment) => {
+      if (comment.id === id) {
+        return {
+          ...comment,
+          content: inputWord,
+        };
+      }
+      return comment;
+    }));
+  };
+
   return (
     <div>
       <input value={input} onChange={onChange}></input>
-      <button onClick={() => addComment(input)}>댓글달기</button>
+      <button
+        onClick={() => {
+          addComment(input);
+          setInput("");
+        }}
+      >
+        댓글달기
+      </button>
       {comments.map((comment, index) => (
         <CommentWrapper key={`${comment.userName}_${index}`}>
           <UserInfoWrapper>
             <p>{comment.userName}</p>
             <button onClick={() => removeComment(comment.id)}>삭제</button>
+            <button onClick={() => chagneContent(comment.id, input)}>
+              수정
+            </button>
           </UserInfoWrapper>
           {comment.content}
         </CommentWrapper>
