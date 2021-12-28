@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../datas/User/UserContextAPI";
-import axios from "axios";
-import { initializeNaverLogin } from "../API/login";
+import { UserContext } from "../datas/User/UserContextAPI"
+import { getKakaoProfile, initializeKakaoLogin, initializeNaverLogin } from "../API/login";
 
 const Container = styled.div`
   display: flex;
@@ -30,7 +29,7 @@ const Button = styled.button`
 
 const Login = () => {
   const navigate = useNavigate();
-  const { userAccountDatas, setUserData } = useContext(UserContext);
+  const { userAccountDatas, setUserData, userData } = useContext(UserContext);
 
   const [input, setInput] = useState({
     id: "",
@@ -48,23 +47,16 @@ const Login = () => {
     setUserData(
       userAccountDatas.filter((userData) => {
         if (userData.id === input.id) {
-          navigate(`/`);
+          navigate('/');
           return userData.pw === input.pw;
         }
       })
     );
-  };
 
-  const kakaoLogin = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/login/kakao");
-      console.log("respoonse", response);
-    } catch (e) {
-      console.log("e", e);
-    }
   };
 
   useEffect(() => {
+    // initializeKakaoLogin();
     initializeNaverLogin();
   }, []);
 
@@ -84,8 +76,9 @@ const Login = () => {
       />
 
       <Button onClick={handleLogin}>로그인!</Button>
+      <Button onClick={() => getKakaoProfile(setUserData)}>카카오로그인!</Button>
+      {userData}
       <div id="naverIdLogin"></div>
-      <Button onClick={kakaoLogin}>카카오로그인!</Button>
     </Container>
   );
 };
