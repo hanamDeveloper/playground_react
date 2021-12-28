@@ -1,9 +1,20 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "../App.css";
 
-function InfiniteScroll({ datas, scrollOptions, setScrollOptions }) {
+function InfiniteScroll() {
   const fullContent = useRef();
   const childContent = useRef();
+
+  const [datas, setDatas] = useState([]);
+  const [scrollOptions, setScrollOptions] = useState({
+    childLength: 30,
+    fullHeight: 0,
+  });
+
+  useEffect(() => {
+    setDatas(initialDatas.slice(0, scrollOptions.childLength));
+  }, [scrollOptions.childLength]);
+  const initialDatas = require("../json/infiniteScroll.json");
   
   const onScroll = useCallback(
     (e) => {
