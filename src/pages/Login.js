@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from 'react-router-dom';
-import { UserContext } from "../datas/User/UserContextAPI";
-
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../datas/User/UserContextAPI"
+import { getKakaoProfile, initializeKakaoLogin, initializeNaverLogin } from "../API/login";
 
 const Container = styled.div`
   display: flex;
@@ -28,9 +28,8 @@ const Button = styled.button`
 `;
 
 const Login = () => {
-    const navigate = useNavigate();
-    const { userAccountDatas, setUserData } = useContext(UserContext)
-    
+  const navigate = useNavigate();
+  const { userAccountDatas, setUserData, userData } = useContext(UserContext);
 
   const [input, setInput] = useState({
     id: "",
@@ -45,15 +44,21 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    setUserData(userAccountDatas.filter(userData => {
-      if (userData.id === input.id) {
-        navigate(`/`)
-        return userData.pw === input.pw;
-      }
-    }));
+    setUserData(
+      userAccountDatas.filter((userData) => {
+        if (userData.id === input.id) {
+          navigate('/');
+          return userData.pw === input.pw;
+        }
+      })
+    );
+
   };
 
-
+  useEffect(() => {
+    // initializeKakaoLogin();
+    initializeNaverLogin();
+  }, []);
 
   return (
     <Container>
@@ -71,6 +76,9 @@ const Login = () => {
       />
 
       <Button onClick={handleLogin}>로그인!</Button>
+      <Button onClick={() => getKakaoProfile(setUserData)}>카카오로그인!</Button>
+      {userData}
+      <div id="naverIdLogin"></div>
     </Container>
   );
 };
