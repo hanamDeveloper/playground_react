@@ -47,6 +47,9 @@ export default function MomentExample() {
                 <div>{day}</div>
                 {moment("2017-07-17").format("YYYY년 M월 D일")}
             </div>
+            <div>두 날짜 비교</div>
+            <div>2018-01-01 03:00:00 와 2018-01-02 02:00:00 의 시간차이 구하기</div>
+            <div>{`${moment("2018-01-01 03:00").diff(moment("2018-01-02 02:00"), "hours")}`}시간 차이입니다.</div>
         </div>
     )
 }
