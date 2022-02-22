@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import moment from "moment-timezone";
+import "moment/locale/ko";
 
 export default function MomentExample() {
     const birthDayRef = useRef(null);
@@ -11,6 +12,7 @@ export default function MomentExample() {
     const momentDate = moment();
     const newMomentDate = momentDate.add(1, "week");
     const cloneNewMomentDate = newMomentDate.clone().add(1, "week");
+
     return (
         <div>
             <h1>Moment</h1>
@@ -50,6 +52,10 @@ export default function MomentExample() {
             <div>두 날짜 비교</div>
             <div>2018-01-01 03:00:00 와 2018-01-02 02:00:00 의 시간차이 구하기</div>
             <div>{`${moment("2018-01-01 03:00").diff(moment("2018-01-02 02:00"), "hours")}`}시간 차이입니다.</div>
+
+            <p>모멘트는 굉장히 오랜시간 사랑받아온 만큼 굉장히 오래된 라이브러리이다. 
+                물론 아직 유용하지만 현재 나온 기술과 잘 맞지 않다. 우선 태생적으로 사이즈가 너무 크고 그것을 업데이트 하기에는 기존에 moment를 사용했던 많은 프로젝트가 망가질 수 있다. 그러니 더이상 업데이트를 하지 않는다고 선언했다.
+            </p>
         </div>
     )
 }
