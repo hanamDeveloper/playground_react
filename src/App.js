@@ -7,6 +7,7 @@ import PInfiniteScroll from "./pages/PInfiniteScroll";
 import PSearch from "./pages/PSearch";
 import PZoomImage from "./pages/PZoomImage";
 import PComment from "./pages/PComment";
+import MomentExample from "./pages/Moment";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/zoomImage" element={<PZoomImage />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/comment" element={<PComment />} />
+        <Route exact path="/moment" element={<MomentExample />} />
       </Routes>
       
     </div>
