@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import moment from "moment-timezone";
 
 export default function MomentExample() {
+    const birthDayRef = useRef(null);
+    const [day, setDay ] = useState(null)
+
+    const handleBirthDayChange = (e) => {
+        setDay(moment(e.target.value, "YYYY-MM-DD").format("dddd"));
+    }
     const momentDate = moment();
     const newMomentDate = momentDate.add(1, "week");
     const cloneNewMomentDate = newMomentDate.clone().add(1, "week");
@@ -32,6 +38,13 @@ export default function MomentExample() {
             </div>
             <div>
                 07-17-2021 을 한국어로 표기
+                {moment("2017-07-17").format("YYYY년 M월 D일")}
+            </div>
+
+            <div>
+                <input type="date" ref={birthDayRef} onChange={handleBirthDayChange} />
+                <p>무슨요일일까요?</p>
+                <div>{day}</div>
                 {moment("2017-07-17").format("YYYY년 M월 D일")}
             </div>
         </div>
