@@ -30,6 +30,10 @@ export default function MomentExample() {
                 2017년 1월 1일에 365일 빼기 더하기:
                 {moment("2017-01-01").subtract(365, "day").format()}
             </div>
+            <div>
+                07-17-2021 을 한국어로 표기
+                {moment("2017-07-17").format("YYYY년 M월 D일")}
+            </div>
         </div>
     )
 }
