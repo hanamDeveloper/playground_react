@@ -8,23 +8,24 @@ import PSearch from "./pages/PSearch";
 import PZoomImage from "./pages/PZoomImage";
 import PComment from "./pages/PComment";
 import MomentExample from "./pages/Moment";
+import { RecoilRoot } from "recoil";
 
 function App() {
   return (
     <UserProvider>
-    <div className="container">
-      
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/infiniteScroll" element={<PInfiniteScroll />} />
-        <Route exact path="/search" element={<PSearch />} />
-        <Route exact path="/zoomImage" element={<PZoomImage />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/comment" element={<PComment />} />
-        <Route exact path="/moment" element={<MomentExample />} />
-      </Routes>
-      
-    </div>
+      <RecoilRoot>
+        <div className="container">
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/infiniteScroll" element={<PInfiniteScroll />} />
+            <Route exact path="/search" element={<PSearch />} />
+            <Route exact path="/zoomImage" element={<PZoomImage />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/comment" element={<PComment />} />
+            <Route exact path="/moment" element={<MomentExample />} />
+          </Routes>
+        </div>
+      </RecoilRoot>
     </UserProvider>
   );
 }
