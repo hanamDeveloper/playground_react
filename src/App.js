@@ -9,6 +9,7 @@ import PZoomImage from "./pages/PZoomImage";
 import PComment from "./pages/PComment";
 import MomentExample from "./pages/Moment";
 import { RecoilRoot } from "recoil";
+import RecoilTodo from "./pages/RecoilTodo";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/comment" element={<PComment />} />
             <Route exact path="/moment" element={<MomentExample />} />
+            <Route exact path="/recoilTodo" element={<RecoilTodo/>} />
           </Routes>
         </div>
       </RecoilRoot>

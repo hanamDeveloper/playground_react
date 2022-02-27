@@ -23,6 +23,7 @@ const Home = () => {
         <Link to="login">Login</Link>
         <Link to="comment">Comment</Link>
         <Link to="moment">Moment</Link>
+        <Link to="recoilTodo">RecoilTodo</Link>
       </div>
     </div>
   );
